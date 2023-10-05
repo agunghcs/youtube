@@ -1,0 +1,10 @@
+import marshal
+file = input('Name File : ')
+m1 = open(file).read()
+m2 = compile(m1, '', 'exec')
+m3 = marshal.dumps(m2)
+start = open('uncode-' + file, 'w')
+start.write('import marshal\n')
+start.write('exec(marshal.loads(' + repr(m3) + '))')
+start.close()
+print('Done')
