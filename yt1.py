@@ -1,22 +1,42 @@
-from pytube import YouTube, Stream
-import time
+from pytube import YouTube
+from time import sleep
 
-link = input("YouTube Link: ")
-video = YouTube(link)
 
-print("\nInfo:")
-print(f"""
-Judul: {video.title}
-Penayangan video: {video.views}
-Durasi video (detik): {video.length}
-Penulis video: {video.author}
-Tanggal publikasi: {video.publish_date}
-Url gambar mini video: {video.thumbnail_url}
+
+def printLow(Str):
+    for char in Str:
+        print(char, end='', flush=True)
+        sleep(.01)
+        
+        
+r='\033[1;31m' 
+g='\033[32;1m' 
+y='\033[1;33m'
+w='\033[1;37m' 
+
+
+
+printLow(f"""\n{y}@url = """)
+    
+   
+link = input("")
+kir = YouTube(link)
+
+printLow(f"""\n{y}Info:
+    {g}[+] {y}nama video: {w}({kir.title})
+    {g}[+] {y}Penayangan video: {w}({kir.views})
+    {g}[+] {y}Durasi video (sec): {w}({kir.length})
 """)
-print("\nVideo Download")
 
-video_resolution = video.streams.get_highest_resolution()
-time.sleep(1)
-print("Donwloading... ")
-video_resolution.download('/sdcard/')
-print("Download complete!")
+
+
+x = input(f'\n{g}[?] {r}anda ingin mengunduh(Y/n) {y}- {w}')
+if x.lower() == "y" :
+    printLow(f"\n{g}[+] {y}memuat ...\n")
+    ys = kir.streams.get_highest_resolution()
+    ys.download()
+    printLow(f"{g}[+] {y}selesai!\n")
+elif x.lower() == "n" :
+    printLow(f"\n{g}[-] {r}جار?. !\n")
+else:
+    printLow(f"{r}kesalahanأ!\n")
