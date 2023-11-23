@@ -30,7 +30,7 @@ pkg install python
 pip install pytube
 git clone https://github.com/mamasagung/youtube
 cd youtube
-python yt3.py
+python yt.py
 fi
 
 if [ $bro = 3 ] || [ $bro = 3 ]
